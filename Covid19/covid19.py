@@ -65,17 +65,6 @@ plt.ylabel('Proportion of deaths over cases')
 plt.title('Proportion of deaths over positive cases as at {}'.format(database['date'].max()))
 plt.show()
 
-# database_copy = database.copy()
-# database_copy = database_copy[database_copy['human_development_index'] > 0.0]
-# database_new = database_copy.groupby(['location'])[['new_deaths','new_cases']].sum()
-# database_new['hdi'] = database_copy.groupby(['location'])['human_development_index'].mean()
-# database_new['proportion'] = database_new['new_deaths']/database_new['new_cases']
-# #database_new.to_csv('test.csv')
-# plt.scatter(database_new['hdi'], database_new['proportion'])
-# plt.xlabel('Human Development Index')
-# plt.ylabel('Proportion of deaths over positive cases')
-# plt.show()
-
 ###PLOT ON WORLD MAP
 latest_avail_data = database.groupby(['iso_code'])['new_cases'].sum()
 log_func = lambda x: math.log(x)
