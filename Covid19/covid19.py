@@ -65,12 +65,8 @@ plt.show()
 
 ###PLOT ON WORLD MAP
 latest_avail_data = database.groupby(['iso_code'])['new_cases'].sum()
-log_func = lambda x: math.log(x)
-latest_avail_data.agg({'new_cases':[log_func]})
-#latest_avail_data.to_csv('C:/Users/Ivan Lee/TheProgrammingNoob/Pandas/Covid19/test.csv')
+print(latest_avail_data)
 world_map = folium.Map(location = [100, 0], zoom_start = 1.5)
-country_geo = 'C:/Users/Ivan Lee/TheProgrammingNoob/Pandas/Covid19/world-countries.json'
+country_geo = '..\covid-19_visualization\Covid19\world-countries.json'
 folium.Choropleth(geo_data = country_geo, data = latest_avail_data, columns = ['iso_code', 'new_cases'],key_on = 'feature.id',fill_color='YlGnBu', fill_opacity = 0.7, line_opacity = 0.2, legend_name = 'Total Covid Cases').add_to(world_map)
-#folium.LayerControl().add_to(world_map)
-#world_map.save('C:/Users/Ivan Lee/TheProgrammingNoob/Pandas/Covid19/world_map.html')
-world_map.save('../world_map.html')
+world_map.save('../covid-19_visualization/Covid19/world_map.html')
